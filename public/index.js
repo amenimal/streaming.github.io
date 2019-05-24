@@ -7,8 +7,8 @@ const config = { // eslint-disable-line no-unused-vars
 };
 
 const socket = io.connect(window.location.origin);
-const video = document.querySelector('video'); // eslint-disable-line no-unused-vars
-
+const video = document.querySelector('video'); 
+const audio = document.querySelector('audio');           // eslint-disable-line no-unused-vars
 window.onunload = window.onbeforeunload = function() {
 	socket.close();
 };
