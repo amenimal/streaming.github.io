@@ -4,7 +4,7 @@ const peerConnections = {};
 /** @type {MediaStreamConstraints} */
 const constraints = {
         audio: true,
-	video: false,
+	video: true,
 };
 
 navigator.mediaDevices.getUserMedia(constraints)
