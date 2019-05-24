@@ -3,13 +3,13 @@ const peerConnections = {};
 
 /** @type {MediaStreamConstraints} */
 const constraints = {
-	// audio: true,
+        audio: true,
 	video: {facingMode: "user"}
 };
 
 navigator.mediaDevices.getUserMedia(constraints)
 .then(function(stream) {
-	video.srcObject = stream;
+	constrains.srcObject = stream;
 	socket.emit('broadcaster');
 }).catch(error => console.error(error));
 
@@ -20,7 +20,7 @@ socket.on('answer', function(id, description) {
 socket.on('watcher', function(id) {
 	const peerConnection = new RTCPeerConnection(config);
 	peerConnections[id] = peerConnection;
-	peerConnection.addStream(video.srcObject);
+	peerConnection.addStream(constraints.srcObject);
 	peerConnection.createOffer()
 	.then(sdp => peerConnection.setLocalDescription(sdp))
 	.then(function () {
