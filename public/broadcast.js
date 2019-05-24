@@ -4,7 +4,6 @@ const peerConnections = {};
 /** @type {MediaStreamConstraints} */
 const constraints = {
         audio: true,
-	video: true,
 };
 navigator.mediaDevices.getUserMedia(constraints)
 .then(function(stream) {
@@ -15,11 +14,10 @@ navigator.mediaDevices.getUserMedia(constraints)
 socket.on('answer', function(id, description) {
 	peerConnections[id].setRemoteDescription(description);
 });
-
 socket.on('watcher', function(id) {
 	const peerConnection = new RTCPeerConnection(config);
 	peerConnections[id] = peerConnection;
-	peerConnection.addStream(constraints.srcObject);
+	peerConnection.addStream(audio.srcObject);
 	peerConnection.createOffer()
 	.then(sdp => peerConnection.setLocalDescription(sdp))
 	.then(function () {
@@ -31,7 +29,6 @@ socket.on('watcher', function(id) {
 		}
 	};
 });
-
 socket.on('candidate', function(id, candidate) {
 	peerConnections[id].addIceCandidate(new RTCIceCandidate(candidate));
 });
