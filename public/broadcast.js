@@ -1,6 +1,5 @@
 /*global socket, video, config*/
 const peerConnections = {};
-
 /** @type {MediaStreamConstraints} */
 const constraints = {
         audio: true,
