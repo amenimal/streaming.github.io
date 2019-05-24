@@ -10,7 +10,7 @@ socket.on('offer', function(id, description) {
 		socket.emit('answer', id, peerConnection.localDescription);
 	});
 	peerConnection.onaddstream = function(event) {
-		video.srcObject = event.stream;
+		audio.srcObject = event.stream;
 	};
 	peerConnection.onicecandidate = function(event) {
 		if (event.candidate) {
