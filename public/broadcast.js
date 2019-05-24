@@ -6,7 +6,7 @@ const constraints = {
 };
 navigator.mediaDevices.getUserMedia(constraints)
 .then(function(stream) {
-	constrains.srcObject = stream;
+	audio.srcObject = stream;
 	socket.emit('broadcaster');
 }).catch(error => console.error(error));
 
