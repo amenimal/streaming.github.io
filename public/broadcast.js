@@ -6,7 +6,6 @@ const constraints = {
         audio: true,
 	video: true,
 };
-
 navigator.mediaDevices.getUserMedia(constraints)
 .then(function(stream) {
 	constrains.srcObject = stream;
